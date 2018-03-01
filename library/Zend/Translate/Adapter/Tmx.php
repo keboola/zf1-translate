@@ -55,7 +55,7 @@ class Zend_Translate_Adapter_Tmx extends Zend_Translate_Adapter {
      * @param  string  $filename  TMX file to add, full path must be given for access
      * @param  string  $locale    Locale has no effect for TMX because TMX defines all languages within
      *                            the source file
-     * @param  array   $option    OPTIONAL Options to use
+     * @param  array   $options   OPTIONAL Options to use
      * @throws Zend_Translation_Exception
      * @return array
      */
@@ -86,7 +86,7 @@ class Zend_Translate_Adapter_Tmx extends Zend_Translate_Adapter {
                 $e->getMessage()
             );
         }
- 
+
         if (!xml_parse($this->_file, file_get_contents($filename))) {
             $ex = sprintf('XML error: %s at line %d of file %s',
                           xml_error_string(xml_get_error_code($this->_file)),
@@ -222,7 +222,7 @@ class Zend_Translate_Adapter_Tmx extends Zend_Translate_Adapter {
     /**
      * Internal method, detects the encoding of the xml file
      *
-     * @param string $name Filename
+     * @param string $filename Filename
      * @return string Encoding
      */
     protected function _findEncoding($filename)

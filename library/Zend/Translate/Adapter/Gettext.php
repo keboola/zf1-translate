@@ -58,7 +58,7 @@ class Zend_Translate_Adapter_Gettext extends Zend_Translate_Adapter {
      * @param  string  $filename  MO file to add, full path must be given for access
      * @param  string  $locale    New Locale/Language to set, identical with locale identifier,
      *                            see Zend_Locale for more information
-     * @param  array   $option    OPTIONAL Options to use
+     * @param  array   $options   OPTIONAL Options to use
      * @throws Zend_Translation_Exception
      * @return array
      */
@@ -133,7 +133,7 @@ class Zend_Translate_Adapter_Gettext extends Zend_Translate_Adapter {
                 }
             }
         }
-        
+
         @fclose($this->_file);
 
         $this->_data[$locale][''] = trim($this->_data[$locale]['']);

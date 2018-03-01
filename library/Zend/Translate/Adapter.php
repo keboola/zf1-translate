@@ -120,8 +120,8 @@ abstract class Zend_Translate_Adapter {
      * Generates the adapter
      *
      * @param  string|array|Zend_Config $options Translation options for this adapter
-     * @param  string|array [$content]
-     * @param  string|Zend_Locale [$locale]
+     * @param  string|array ...$content
+     * @param  string|Zend_Locale ...$locale
      * @throws Zend_Translate_Exception
      * @return void
      */
@@ -214,7 +214,7 @@ abstract class Zend_Translate_Adapter {
         } else if (!is_array($options)) {
             $options = array('content' => $options);
         }
-        
+
         if (!isset($options['content']) || empty($options['content'])) {
             // require_once 'Zend/Translate/Exception.php';
             throw new Zend_Translate_Exception("Required option 'content' is missing");
@@ -254,7 +254,7 @@ abstract class Zend_Translate_Adapter {
                 ),
                 RecursiveIteratorIterator::SELF_FIRST
             );
-            
+
             foreach ($iterator as $directory => $info) {
                 $file = $info->getFilename();
                 if (is_array($options['ignore'])) {
@@ -323,7 +323,7 @@ abstract class Zend_Translate_Adapter {
                     }
                 }
             }
-            
+
             unset($iterator);
         } else {
             $this->_addTranslationData($options);
@@ -579,7 +579,8 @@ abstract class Zend_Translate_Adapter {
      * language is replaced and added otherwise
      *
      * @see    Zend_Locale
-     * @param  array|Zend_Config $content Translation data to add
+     * @param  array|Zend_Config $options
+     * @param mixed ...$args Translation data to add
      * @throws Zend_Translate_Exception
      * @return Zend_Translate_Adapter Provides fluent interface
      */
@@ -979,8 +980,6 @@ abstract class Zend_Translate_Adapter {
 
     /**
      * Internal method to check if the given cache supports tags
-     *
-     * @param Zend_Cache $cache
      */
     private static function _getTagSupportForCache()
     {
