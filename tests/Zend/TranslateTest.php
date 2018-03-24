@@ -261,7 +261,6 @@ class Zend_TranslateTest extends PHPUnit\Framework\TestCase
     {
         require_once 'Zend/Locale.php';
         $locale = new Zend_Locale('de_AT');
-        require_once 'Zend/Registry.php';
         Zend_Registry::set('Zend_Locale', $locale);
 
         $lang = new Zend_Translate(Zend_Translate::AN_ARRAY, array('msg1' => 'message1'), 'de_AT');
