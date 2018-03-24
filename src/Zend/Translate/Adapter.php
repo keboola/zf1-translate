@@ -614,6 +614,7 @@ abstract class Zend_Translate_Adapter {
         }
 
         $read = true;
+        $temp = array();
         if (isset(self::$_cache)) {
             $id = 'Zend_Translate_' . md5(serialize($options['content'])) . '_' . $this->toString();
             $temp = self::$_cache->load($id);

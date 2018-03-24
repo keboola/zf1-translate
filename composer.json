@@ -43,7 +43,7 @@
     "scripts": {
         "test": "phpunit ./tests",
         "test-with-coverage": "phpunit --coverage-clover=clover.xml ./tests",
-        "phpstan": "phpstan analyze -l7 -c phpstan.neon --no-progress ./src ./tests --ansi"
+        "phpstan": "phpstan analyze -l4 -c phpstan.neon --no-progress ./src --ansi"
     },
     "suggest": {
         "ext-xml": "Many of the translation adapters require this extension"
