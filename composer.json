@@ -15,6 +15,7 @@
         "diablomedia/zendframework1-exception": "^1.0.0",
         "diablomedia/zendframework1-config": "^1.0.0",
         "diablomedia/zendframework1-loader": "^1.0.0",
+        "diablomedia/zendframework1-xml": "^1.0.0",
         "diablomedia/zendframework1-cache": "dev-master",
         "diablomedia/zendframework1-locale": "dev-master",
         "diablomedia/zendframework1-log": "dev-master"
@@ -43,5 +44,8 @@
         "test": "phpunit ./tests",
         "test-with-coverage": "phpunit --coverage-clover=clover.xml ./tests",
         "phpstan": "phpstan analyze -l7 -c phpstan.neon --no-progress ./src ./tests --ansi"
+    },
+    "suggest": {
+        "ext-xml": "Many of the translation adapters require this extension"
     }
 }

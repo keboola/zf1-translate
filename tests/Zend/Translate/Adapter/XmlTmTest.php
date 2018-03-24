@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-/**
- * Zend_Translate_Adapter_XmlTm
- */
-require_once 'Zend/Translate/Adapter/XmlTm.php';
 
 /**
  * @category   Zend
@@ -188,7 +184,6 @@ class Zend_Translate_Adapter_XmlTmTest extends PHPUnit\Framework\TestCase
 
     public function testOptionLocaleDirectory()
     {
-        require_once 'Zend/Translate.php';
         $adapter = new Zend_Translate_Adapter_XmlTm(dirname(__FILE__) . '/_files/testxmltm', 'de_AT', array('scan' => Zend_Translate::LOCALE_DIRECTORY));
         $this->assertEquals(array('de_AT' => 'de_AT', 'en_GB' => 'en_GB'), $adapter->getList());
         $this->assertEquals('Nachricht 1', $adapter->translate('Message 1'));
@@ -196,7 +191,6 @@ class Zend_Translate_Adapter_XmlTmTest extends PHPUnit\Framework\TestCase
 
     public function testOptionLocaleFilename()
     {
-        require_once 'Zend/Translate.php';
         $adapter = new Zend_Translate_Adapter_XmlTm(dirname(__FILE__) . '/_files/testxmltm', 'de_DE', array('scan' => Zend_Translate::LOCALE_FILENAME));
         $this->assertEquals(array('de_DE' => 'de_DE', 'en_US' => 'en_US'), $adapter->getList());
         $this->assertEquals('Nachricht 1', $adapter->translate('Message 1'));
