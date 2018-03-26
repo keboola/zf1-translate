@@ -16,9 +16,9 @@
         "diablomedia/zendframework1-config": "^1.0.0",
         "diablomedia/zendframework1-loader": "^1.0.0",
         "diablomedia/zendframework1-xml": "^1.0.0",
-        "diablomedia/zendframework1-cache": "*",
-        "diablomedia/zendframework1-locale": "*",
-        "diablomedia/zendframework1-log": "*"
+        "diablomedia/zendframework1-cache": "^1.0.0",
+        "diablomedia/zendframework1-locale": "^1.0.0",
+        "diablomedia/zendframework1-log": "^1.0.0"
     },
     "autoload": {
         "psr-0": {
