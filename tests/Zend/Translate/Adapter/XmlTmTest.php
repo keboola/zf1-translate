@@ -38,14 +38,14 @@ class Zend_Translate_Adapter_XmlTmTest extends PHPUnit\Framework\TestCase
 
         try {
             $adapter = new Zend_Translate_Adapter_XmlTm(dirname(__FILE__) . '/_files/nofile.xmltm', 'en');
-            $this->fail("exception expected");
+            $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
             $this->assertContains('is not readable', $e->getMessage());
         }
 
         try {
             $adapter = new Zend_Translate_Adapter_XmlTm(dirname(__FILE__) . '/_files/failed.xmltm', 'en');
-            $this->fail("exception expected");
+            $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
             $this->assertContains('Mismatched tag at line', $e->getMessage());
         }
@@ -58,7 +58,7 @@ class Zend_Translate_Adapter_XmlTmTest extends PHPUnit\Framework\TestCase
     {
         try {
             $adapter = new Zend_Translate_Adapter_XmlTm(dirname(__FILE__) . '/_files/nofile.xmltm', 'en');
-            $this->fail("exception expected");
+            $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
             $this->assertContains('nofile.xmltm', $e->getMessage());
         }
@@ -101,7 +101,7 @@ class Zend_Translate_Adapter_XmlTmTest extends PHPUnit\Framework\TestCase
 
         try {
             $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en.xmltm', 'xx');
-            $this->fail("exception expected");
+            $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
             $this->assertContains('does not exist', $e->getMessage());
         }
@@ -159,7 +159,7 @@ class Zend_Translate_Adapter_XmlTmTest extends PHPUnit\Framework\TestCase
 
         try {
             $adapter->setLocale('nolocale');
-            $this->fail("exception expected");
+            $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
             $this->assertContains('does not exist', $e->getMessage());
         }

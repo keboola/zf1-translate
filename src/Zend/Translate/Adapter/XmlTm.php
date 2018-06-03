@@ -26,14 +26,15 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Translate_Adapter_XmlTm extends Zend_Translate_Adapter {
+class Zend_Translate_Adapter_XmlTm extends Zend_Translate_Adapter
+{
     // Internal variables
-    private $_file        = false;
-    private $_cleared     = array();
-    private $_lang        = null;
-    private $_content     = null;
-    private $_tag         = null;
-    private $_data        = array();
+    private $_file    = false;
+    private $_cleared = array();
+    private $_lang    = null;
+    private $_content = null;
+    private $_tag     = null;
+    private $_data    = array();
 
     /**
      * Load translation data (XMLTM file reader)
@@ -57,8 +58,8 @@ class Zend_Translate_Adapter_XmlTm extends Zend_Translate_Adapter {
         $this->_file = xml_parser_create($encoding);
         xml_set_object($this->_file, $this);
         xml_parser_set_option($this->_file, XML_OPTION_CASE_FOLDING, 0);
-        xml_set_element_handler($this->_file, "_startElement", "_endElement");
-        xml_set_character_data_handler($this->_file, "_contentElement");
+        xml_set_element_handler($this->_file, '_startElement', '_endElement');
+        xml_set_character_data_handler($this->_file, '_contentElement');
 
         try {
             Zend_Xml_Security::scanFile($filename);
@@ -69,10 +70,12 @@ class Zend_Translate_Adapter_XmlTm extends Zend_Translate_Adapter {
         }
 
         if (!xml_parse($this->_file, file_get_contents($filename))) {
-            $ex = sprintf('XML error: %s at line %d of file %s',
+            $ex = sprintf(
+                'XML error: %s at line %d of file %s',
                           xml_error_string(xml_get_error_code($this->_file)),
                           xml_get_current_line_number($this->_file),
-                          $filename);
+                          $filename
+            );
             xml_parser_free($this->_file);
             throw new Zend_Translate_Exception($ex);
         }
@@ -82,7 +85,7 @@ class Zend_Translate_Adapter_XmlTm extends Zend_Translate_Adapter {
 
     private function _startElement($file, $name, $attrib)
     {
-        switch(strtolower($name)) {
+        switch (strtolower($name)) {
             case 'tm:tu':
                 $this->_tag     = $attrib['id'];
                 $this->_content = null;
@@ -119,8 +122,8 @@ class Zend_Translate_Adapter_XmlTm extends Zend_Translate_Adapter {
     private function _findEncoding($filename)
     {
         $file = file_get_contents($filename, null, null, 0, 100);
-        if (strpos($file, "encoding") !== false) {
-            $encoding = substr($file, strpos($file, "encoding") + 9);
+        if (strpos($file, 'encoding') !== false) {
+            $encoding = substr($file, strpos($file, 'encoding') + 9);
             $encoding = substr($encoding, 1, strpos($encoding, $encoding[0], 1) - 1);
             return $encoding;
         }
@@ -134,6 +137,6 @@ class Zend_Translate_Adapter_XmlTm extends Zend_Translate_Adapter {
      */
     public function toString()
     {
-        return "XmlTm";
+        return 'XmlTm';
     }
 }

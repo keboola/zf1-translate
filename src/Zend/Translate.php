@@ -25,7 +25,8 @@
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_Translate {
+class Zend_Translate
+{
     /**
      * Adapter names constants
      */
@@ -61,7 +62,7 @@ class Zend_Translate {
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
-        } else if (func_num_args() > 1) {
+        } elseif (func_num_args() > 1) {
             $args               = func_get_args();
             $options            = array();
             $options['adapter'] = array_shift($args);
@@ -77,7 +78,7 @@ class Zend_Translate {
                 $opt     = array_shift($args);
                 $options = array_merge($opt, $options);
             }
-        } else if (!is_array($options)) {
+        } elseif (!is_array($options)) {
             $options = array('adapter' => $options);
         }
 
@@ -96,7 +97,7 @@ class Zend_Translate {
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
-        } else if (func_num_args() > 1) {
+        } elseif (func_num_args() > 1) {
             $args               = func_get_args();
             $options            = array();
             $options['adapter'] = array_shift($args);
@@ -112,11 +113,11 @@ class Zend_Translate {
                 $opt     = array_shift($args);
                 $options = array_merge($opt, $options);
             }
-        } else if (!is_array($options)) {
+        } elseif (!is_array($options)) {
             $options = array('adapter' => $options);
         }
 
-        if (Zend_Loader::isReadable('Zend/Translate/Adapter/' . ucfirst($options['adapter']). '.php')) {
+        if (Zend_Loader::isReadable('Zend/Translate/Adapter/' . ucfirst($options['adapter']) . '.php')) {
             $options['adapter'] = 'Zend_Translate_Adapter_' . ucfirst($options['adapter']);
         }
 
@@ -132,7 +133,7 @@ class Zend_Translate {
         unset($options['adapter']);
         $this->_adapter = new $adapter($options);
         if (!$this->_adapter instanceof Zend_Translate_Adapter) {
-            throw new Zend_Translate_Exception("Adapter " . $adapter . " does not extend Zend_Translate_Adapter");
+            throw new Zend_Translate_Exception('Adapter ' . $adapter . ' does not extend Zend_Translate_Adapter');
         }
     }
 

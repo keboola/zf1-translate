@@ -45,9 +45,9 @@ class Zend_Translate_Plural
      */
     public static function getPlural($number, $locale)
     {
-        if ($locale == "pt_BR") {
+        if ($locale == 'pt_BR') {
             // temporary set a locale for brasilian
-            $locale = "xbr";
+            $locale = 'xbr';
         }
 
         if (strlen($locale) > 3) {
@@ -64,7 +64,7 @@ class Zend_Translate_Plural
             return $return;
         }
 
-        switch($locale) {
+        switch ($locale) {
             case 'az':
             case 'bo':
             case 'dz':
@@ -205,9 +205,9 @@ class Zend_Translate_Plural
      */
     public static function setPlural($rule, $locale)
     {
-        if ($locale == "pt_BR") {
+        if ($locale == 'pt_BR') {
             // temporary set a locale for brasilian
-            $locale = "xbr";
+            $locale = 'xbr';
         }
 
         if (strlen($locale) > 3) {

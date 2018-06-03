@@ -1,4 +1,7 @@
 parameters:
+    excludes_analyse:
+        - %rootDir%/../../../vendor/*
+        - %rootDir%/../../../tests/*
     ignoreErrors:
         - '#Variable \$number might not be defined\.#'
         - '#Variable \$plocale might not be defined\.#'

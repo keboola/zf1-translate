@@ -21,10 +21,10 @@
  */
 
 return array(
-    'Message 1' => 'Message 1 (ja)',
-    'Message 2' => 'Message 2 (ja)',
-    'Message 3' => 'Message 3 (ja)',
-    'Message 4' => 'Message 4 (ja)',
+    'Message 1'         => 'Message 1 (ja)',
+    'Message 2'         => 'Message 2 (ja)',
+    'Message 3'         => 'Message 3 (ja)',
+    'Message 4'         => 'Message 4 (ja)',
     'Cooking furniture' => 'Küchen Möbel (ja)',
-    'Küchen Möbel' => 'Cooking furniture (ja)'
+    'Küchen Möbel'      => 'Cooking furniture (ja)'
 );

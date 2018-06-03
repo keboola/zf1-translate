@@ -38,14 +38,14 @@ class Zend_Translate_Adapter_QtTest extends PHPUnit\Framework\TestCase
 
         try {
             $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/nofile.ts', 'en');
-            $this->fail("exception expected");
+            $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
             $this->assertContains('is not readable', $e->getMessage());
         }
 
         try {
             $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/failed.ts', 'en');
-            $this->fail("exception expected");
+            $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
             $this->assertContains('Mismatched tag at line', $e->getMessage());
         }
@@ -58,7 +58,7 @@ class Zend_Translate_Adapter_QtTest extends PHPUnit\Framework\TestCase
     {
         try {
             $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/nofile.ts', 'en');
-            $this->fail("exception expected");
+            $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
             $this->assertContains('nofile.ts', $e->getMessage());
         }
@@ -101,7 +101,7 @@ class Zend_Translate_Adapter_QtTest extends PHPUnit\Framework\TestCase
 
         try {
             $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en.ts', 'xx');
-            $this->fail("exception expected");
+            $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
             $this->assertContains('does not exist', $e->getMessage());
         }
@@ -159,7 +159,7 @@ class Zend_Translate_Adapter_QtTest extends PHPUnit\Framework\TestCase
 
         try {
             $adapter->setLocale('nolocale');
-            $this->fail("exception expected");
+            $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
             $this->assertContains('does not exist', $e->getMessage());
         }
@@ -198,8 +198,6 @@ class Zend_Translate_Adapter_QtTest extends PHPUnit\Framework\TestCase
 
     public function testIsoEncoding()
     {
-
-
         $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/translation_en3.ts', 'fr');
         $this->assertEquals('Message 1 (en)', $adapter->translate('Message 1'));
         $this->assertEquals('Message 1 (en)', $adapter->_('Message 1'));

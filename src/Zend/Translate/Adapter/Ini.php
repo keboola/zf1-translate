@@ -43,7 +43,7 @@ class Zend_Translate_Adapter_Ini extends Zend_Translate_Adapter
     {
         $this->_data = array();
         if (!file_exists($data)) {
-            throw new Zend_Translate_Exception("Ini file '".$data."' not found");
+            throw new Zend_Translate_Exception("Ini file '" . $data . "' not found");
         }
 
         $inidata = parse_ini_file($data, false);
@@ -62,6 +62,6 @@ class Zend_Translate_Adapter_Ini extends Zend_Translate_Adapter
      */
     public function toString()
     {
-        return "Ini";
+        return 'Ini';
     }
 }

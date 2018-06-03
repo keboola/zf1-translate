@@ -20,4 +20,4 @@
  * @version    $Id$
  */
 
-return "noarray";
+return 'noarray';
