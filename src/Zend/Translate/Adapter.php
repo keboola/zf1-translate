@@ -848,7 +848,7 @@ abstract class Zend_Translate_Adapter
      * Checks if a string is translated within the source or not
      * returns boolean
      *
-     * @param  string             $messageId Translation string
+     * @param  string|int         $messageId Translation string
      * @param  boolean            $original  (optional) Allow translation only for original language
      *                                       when true, a translation for 'en_US' would give false when it can
      *                                       be translated with 'en' only

@@ -49,7 +49,7 @@ class Zend_Translate_Adapter_Xliff extends Zend_Translate_Adapter
      *                            see Zend_Locale for more information
      * @param  string  $filename  XLIFF file to add, full path must be given for access
      * @param  array   $options   OPTIONAL Options to use
-     * @throws Zend_Translation_Exception
+     * @throws Zend_Translate_Exception
      * @return array
      */
     protected function _loadTranslationData($filename, $locale, array $options = array())
@@ -84,9 +84,9 @@ class Zend_Translate_Adapter_Xliff extends Zend_Translate_Adapter
         if (!xml_parse($this->_file, file_get_contents($filename))) {
             $ex = sprintf(
                 'XML error: %s at line %d of file %s',
-                          xml_error_string(xml_get_error_code($this->_file)),
-                          xml_get_current_line_number($this->_file),
-                          $filename
+                xml_error_string(xml_get_error_code($this->_file)),
+                xml_get_current_line_number($this->_file),
+                $filename
             );
             xml_parser_free($this->_file);
             throw new Zend_Translate_Exception($ex);

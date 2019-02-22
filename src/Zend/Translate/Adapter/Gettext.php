@@ -36,7 +36,7 @@ class Zend_Translate_Adapter_Gettext extends Zend_Translate_Adapter
     /**
      * Read values from the MO file
      *
-     * @param  string  $bytes
+     * @param  int|float  $bytes
      */
     private function _readMOData($bytes)
     {
@@ -54,7 +54,7 @@ class Zend_Translate_Adapter_Gettext extends Zend_Translate_Adapter
      * @param  string  $locale    New Locale/Language to set, identical with locale identifier,
      *                            see Zend_Locale for more information
      * @param  array   $options   OPTIONAL Options to use
-     * @throws Zend_Translation_Exception
+     * @throws Zend_Translate_Exception
      * @return array
      */
     protected function _loadTranslationData($filename, $locale, array $options = array())
