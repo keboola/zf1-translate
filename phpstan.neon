@@ -21,3 +21,7 @@ parameters:
         -
             message: '#Strict comparison using !== between true and true will always evaluate to false\.#'
             path: %currentWorkingDirectory%/src/Zend/Translate/Adapter.php
+        # Defensive coding, argument can be multiple types
+        -
+            message: '#Result of \|\| is always true\.#'
+            path: %currentWorkingDirectory%/src/Zend/Translate/Adapter.php
