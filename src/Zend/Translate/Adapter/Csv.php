@@ -103,6 +103,8 @@ class Zend_Translate_Adapter_Csv extends Zend_Translate_Adapter
             }
         }
 
+        fclose($this->_file);
+
         return $this->_data;
     }
 
