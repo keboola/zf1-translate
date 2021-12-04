@@ -30,9 +30,6 @@ class Zend_Translate_Adapter_Qt extends Zend_Translate_Adapter
 {
     // Internal variables
     private $_file      = false;
-    private $_cleared   = array();
-    private $_transunit = null;
-    private $_source    = null;
     private $_target    = null;
     private $_scontent  = null;
     private $_tcontent  = null;
@@ -92,7 +89,6 @@ class Zend_Translate_Adapter_Qt extends Zend_Translate_Adapter
     {
         switch (strtolower($name)) {
             case 'message':
-                $this->_source   = null;
                 $this->_stag     = false;
                 $this->_ttag     = false;
                 $this->_scontent = null;
@@ -142,7 +138,7 @@ class Zend_Translate_Adapter_Qt extends Zend_Translate_Adapter
 
     private function _findEncoding($filename)
     {
-        $file = file_get_contents($filename, null, null, 0, 100);
+        $file = file_get_contents($filename, false, null, 0, 100);
         if (strpos($file, 'encoding') !== false) {
             $encoding = substr($file, strpos($file, 'encoding') + 9);
             $encoding = substr($encoding, 1, strpos($encoding, $encoding[0], 1) - 1);

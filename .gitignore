@@ -5,3 +5,4 @@
 /tests/Zend/Translate/Adapter/_files/zend_cache*
 .php_cs.cache
 .phpunit.result.cache
+.php-cs-fixer.cache

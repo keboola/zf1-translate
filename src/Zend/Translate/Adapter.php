@@ -849,7 +849,7 @@ abstract class Zend_Translate_Adapter
      * returns boolean
      *
      * @param  string|int         $messageId Translation string
-     * @param  boolean            $original  (optional) Allow translation only for original language
+     * @param  boolean|null       $original  (optional) Allow translation only for original language
      *                                       when true, a translation for 'en_US' would give false when it can
      *                                       be translated with 'en' only
      * @param  string|Zend_Locale $locale    (optional) Locale/Language to use, identical with locale identifier,
@@ -858,7 +858,7 @@ abstract class Zend_Translate_Adapter
      */
     public function isTranslated($messageId, $original = false, $locale = null)
     {
-        if (($original !== false) and ($original !== true)) {
+        if (($original !== false) && ($original !== true)) {
             $locale   = $original;
             $original = false;
         }
