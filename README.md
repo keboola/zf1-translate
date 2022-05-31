@@ -7,3 +7,7 @@ Zend Framework 1 - Translate
 [![License](https://poser.pugx.org/diablomedia/zendframework1-translate/license)](https://packagist.org/packages/diablomedia/zendframework1-translate)
 
 This is just the Zend_Translate component extracted from our fork of the Zend Framework 1 repo (https://github.com/diablomedia/zf1).
+
+## License
+
+MIT licensed, see [LICENSE](./LICENSE) file.
