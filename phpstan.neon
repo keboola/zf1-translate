@@ -3,7 +3,7 @@ parameters:
     level: 4
     paths:
         - ./
-    excludes_analyse:
+    excludePaths:
         - %rootDir%/../../../vendor/*
         - %rootDir%/../../../tests/*
     ignoreErrors:
@@ -14,15 +14,59 @@ parameters:
         - '#PHPDoc tag @param references unknown parameter: \$locale#'
         - '#PHPDoc tag @param references unknown parameter: \$args#'
         -
-            message: '#Offset .+ does not exist on array\(.+\)\.#'
-            path: %currentWorkingDirectory%/src/Zend/Translate/Adapter.php
+            message: '#Offset .+ does not exist on array{.+}\.#'
+            path: ./src/Zend/Translate/Adapter.php
         -
-            message: '#If condition is always false\.#'
-            path: %currentWorkingDirectory%/src/Zend/Translate/Adapter.php
+            message: '#Offset string on array{} in isset\(\) does not exist\.#'
+            path: ./src/Zend/Translate/Adapter/Array.php
         -
-            message: '#Strict comparison using !== between true and true will always evaluate to false\.#'
-            path: %currentWorkingDirectory%/src/Zend/Translate/Adapter.php
+            message: '#Offset string on array{} in isset\(\) does not exist\.#'
+            path: ./src/Zend/Translate/Adapter/Ini.php
+        -
+            message: '#Offset .+ on array{.+} in empty\(\) does not exist\.#'
+            path: ./src/Zend/Translate/Adapter.php
         # Defensive coding, argument can be multiple types
         -
             message: '#Result of \|\| is always true\.#'
-            path: %currentWorkingDirectory%/src/Zend/Translate/Adapter.php
+            path: ./src/Zend/Translate/Adapter.php
+        # These are used through some xml methods
+        -
+            message: '#Method Zend_Translate_Adapter_Qt::_startElement\(\) is unused\.#'
+            path: ./src/Zend/Translate/Adapter/Qt.php
+        -
+            message: '#Method Zend_Translate_Adapter_Qt::_endElement\(\) is unused\.#'
+            path: ./src/Zend/Translate/Adapter/Qt.php
+        -
+            message: '#Method Zend_Translate_Adapter_Qt::_contentElement\(\) is unused\.#'
+            path: ./src/Zend/Translate/Adapter/Qt.php
+        -
+            message: '#Method Zend_Translate_Adapter_Tbx::_startElement\(\) is unused\.#'
+            path: ./src/Zend/Translate/Adapter/Tbx.php
+        -
+            message: '#Method Zend_Translate_Adapter_Tbx::_endElement\(\) is unused\.#'
+            path: ./src/Zend/Translate/Adapter/Tbx.php
+        -
+            message: '#Method Zend_Translate_Adapter_Tbx::_contentElement\(\) is unused\.#'
+            path: ./src/Zend/Translate/Adapter/Tbx.php
+        -
+            message: '#Method Zend_Translate_Adapter_Xliff::_startElement\(\) is unused\.#'
+            path: ./src/Zend/Translate/Adapter/Xliff.php
+        -
+            message: '#Method Zend_Translate_Adapter_Xliff::_endElement\(\) is unused\.#'
+            path: ./src/Zend/Translate/Adapter/Xliff.php
+        -
+            message: '#Method Zend_Translate_Adapter_Xliff::_contentElement\(\) is unused\.#'
+            path: ./src/Zend/Translate/Adapter/Xliff.php
+        -
+            message: '#Method Zend_Translate_Adapter_XmlTm::_startElement\(\) is unused\.#'
+            path: ./src/Zend/Translate/Adapter/XmlTm.php
+        -
+            message: '#Method Zend_Translate_Adapter_XmlTm::_endElement\(\) is unused\.#'
+            path: ./src/Zend/Translate/Adapter/XmlTm.php
+        -
+            message: '#Method Zend_Translate_Adapter_XmlTm::_contentElement\(\) is unused\.#'
+            path: ./src/Zend/Translate/Adapter/XmlTm.php
+        # This isn't true, there is an empty check on this property in the class
+        -
+            message: '#Property Zend_Translate_Adapter_Tmx::\$_useId is never read, only written\.#'
+            path: ./src/Zend/Translate/Adapter/Tmx.php

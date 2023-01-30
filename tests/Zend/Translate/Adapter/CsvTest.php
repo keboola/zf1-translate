@@ -31,7 +31,7 @@
  */
 class Zend_Translate_Adapter_CsvTest extends PHPUnit\Framework\TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         if (Zend_Translate_Adapter_Csv::hasCache()) {
             Zend_Translate_Adapter_Csv::removeCache();
@@ -47,7 +47,7 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit\Framework\TestCase
             $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/nofile.csv', 'en');
             $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('Error opening translation file', $e->getMessage());
+            $this->assertStringContainsString('Error opening translation file', $e->getMessage());
         }
 
         set_error_handler(array($this, 'errorHandlerIgnore'));
@@ -94,7 +94,7 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit\Framework\TestCase
             $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en.csv', 'xx');
             $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('does not exist', $e->getMessage());
+            $this->assertStringContainsString('does not exist', $e->getMessage());
         }
 
         $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.csv', 'de', array('clear' => true));
@@ -155,7 +155,7 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit\Framework\TestCase
             $adapter->setLocale('nolocale');
             $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('does not exist', $e->getMessage());
+            $this->assertStringContainsString('does not exist', $e->getMessage());
         }
 
         set_error_handler(array($this, 'errorHandlerIgnore'));
@@ -218,7 +218,7 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit\Framework\TestCase
      * @param  array   $errcontext
      * @return void
      */
-    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext)
+    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext = array())
     {
         $this->_errorOccurred = true;
     }

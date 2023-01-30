@@ -40,7 +40,7 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit\Framework\TestCase
             $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/nofile.ini', 'en');
             $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('not found', $e->getMessage());
+            $this->assertStringContainsString('not found', $e->getMessage());
         }
 
         set_error_handler(array($this, 'errorHandlerIgnore'));
@@ -61,11 +61,7 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('Message 1 (en)', $adapter->_('Message_1'));
         $this->assertEquals('Message_6', $adapter->translate('Message_6'));
         $this->assertEquals('Küchen Möbel (en)', $adapter->translate('Cooking_furniture'));
-        if (0 > version_compare(PHP_VERSION, '5.3.0')) {
-            $this->assertEquals('Cooking furniture (en)', $adapter->translate('Küchen_Möbel'), var_export($adapter->getMessages('en'), 1));
-        } else {
-            $this->markTestSkipped('PHP 5.3 cannot utilize non-ASCII characters for INI option keys');
-        }
+        $this->assertEquals('Cooking furniture (en)', $adapter->translate('Küchen_Möbel'), var_export($adapter->getMessages('en'), 1));
     }
 
     public function testIsTranslated()
@@ -91,7 +87,7 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit\Framework\TestCase
             $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en.ini', 'xx');
             $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('The given Language', $e->getMessage());
+            $this->assertStringContainsString('The given Language', $e->getMessage());
         }
 
         $adapter->addTranslation(dirname(__FILE__) . '/_files/translation_en2.ini', 'de', array('clear' => true));
@@ -149,7 +145,7 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit\Framework\TestCase
             $adapter->setLocale('nolocale');
             $this->fail('exception expected');
         } catch (Zend_Translate_Exception $e) {
-            $this->assertContains('The given Language', $e->getMessage());
+            $this->assertStringContainsString('The given Language', $e->getMessage());
         }
 
         set_error_handler(array($this, 'errorHandlerIgnore'));
@@ -194,7 +190,7 @@ class Zend_Translate_Adapter_IniTest extends PHPUnit\Framework\TestCase
      * @param  array   $errcontext
      * @return void
      */
-    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext)
+    public function errorHandlerIgnore($errno, $errstr, $errfile, $errline, array $errcontext = array())
     {
         $this->_errorOccurred = true;
     }
