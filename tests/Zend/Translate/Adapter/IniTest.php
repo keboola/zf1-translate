@@ -31,10 +31,12 @@
  */
 class Zend_Translate_Adapter_IniTest extends PHPUnit\Framework\TestCase
 {
+    protected $_errorOccurred;
+
     public function testCreate()
     {
         $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/translation_en.ini');
-        $this->assertTrue($adapter instanceof Zend_Translate_Adapter_Ini);
+        $this->assertInstanceOf(Zend_Translate_Adapter_Ini::class, $adapter);
 
         try {
             $adapter = new Zend_Translate_Adapter_Ini(dirname(__FILE__) . '/_files/nofile.ini', 'en');

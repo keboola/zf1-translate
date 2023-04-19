@@ -31,10 +31,12 @@
  */
 class Zend_Translate_Adapter_QtTest extends PHPUnit\Framework\TestCase
 {
+    protected $_errorOccurred;
+
     public function testCreate()
     {
         $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/translation_en.ts');
-        $this->assertTrue($adapter instanceof Zend_Translate_Adapter_Qt);
+        $this->assertInstanceOf(Zend_Translate_Adapter_Qt::class, $adapter);
 
         try {
             $adapter = new Zend_Translate_Adapter_Qt(dirname(__FILE__) . '/_files/nofile.ts', 'en');

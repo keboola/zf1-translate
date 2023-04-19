@@ -31,6 +31,8 @@
  */
 class Zend_TranslateTest extends PHPUnit\Framework\TestCase
 {
+    protected $_errorOccured;
+
     public function setUp(): void
     {
         if (Zend_Translate::hasCache()) {
@@ -45,7 +47,7 @@ class Zend_TranslateTest extends PHPUnit\Framework\TestCase
     public function testCreate()
     {
         $lang = new Zend_Translate(Zend_Translate::AN_ARRAY, array('1' => '1'));
-        $this->assertTrue($lang instanceof Zend_Translate);
+        $this->assertInstanceOf(Zend_Translate::class, $lang);
     }
 
     public function testLocaleInitialization()
@@ -224,14 +226,14 @@ class Zend_TranslateTest extends PHPUnit\Framework\TestCase
         Zend_Translate::setCache($cache);
 
         $cache = Zend_Translate::getCache();
-        $this->assertTrue($cache instanceof Zend_Cache_Core);
+        $this->assertInstanceOf(Zend_Cache_Core::class, $cache);
         $this->assertTrue(Zend_Translate::hasCache());
 
         $lang    = new Zend_Translate(Zend_Translate::AN_ARRAY, array('msg1' => 'Message 1 (en)'), 'en');
         $adapter = $lang->getAdapter();
-        $this->assertTrue($adapter instanceof Zend_Translate_Adapter_Array);
+        $this->assertInstanceOf(Zend_Translate_Adapter_Array::class, $adapter);
         $adaptercache = $adapter->getCache();
-        $this->assertTrue($adaptercache instanceof Zend_Cache_Core);
+        $this->assertInstanceOf(Zend_Cache_Core::class, $adaptercache);
 
         Zend_Translate::clearCache();
         $this->assertTrue(Zend_Translate::hasCache());
@@ -846,7 +848,7 @@ class Zend_TranslateTest extends PHPUnit\Framework\TestCase
         ));
 
         $return = Zend_Translate::getCache();
-        $this->assertTrue($return instanceof Zend_Cache_Core);
+        $this->assertInstanceOf(Zend_Cache_Core::class, $return);
         $this->assertTrue(Zend_Translate::hasCache());
     }
 

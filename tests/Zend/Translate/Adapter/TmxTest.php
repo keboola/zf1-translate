@@ -31,10 +31,12 @@
  */
 class Zend_Translate_Adapter_TmxTest extends PHPUnit\Framework\TestCase
 {
+    protected $_errorOccurred;
+
     public function testCreate()
     {
         $adapter = new Zend_Translate_Adapter_Tmx(dirname(__FILE__) . '/_files/translation_en.tmx', 'en');
-        $this->assertTrue($adapter instanceof Zend_Translate_Adapter_Tmx);
+        $this->assertInstanceOf(Zend_Translate_Adapter_Tmx::class, $adapter);
 
         try {
             $adapter = new Zend_Translate_Adapter_Tmx(dirname(__FILE__) . '/_files/nofile.tmx', 'en');
