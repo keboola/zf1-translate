@@ -14,17 +14,11 @@ parameters:
         - '#PHPDoc tag @param references unknown parameter: \$locale#'
         - '#PHPDoc tag @param references unknown parameter: \$args#'
         -
-            message: '#Offset .+ does not exist on array{.+}\.#'
-            path: ./src/Zend/Translate/Adapter.php
-        -
             message: '#Offset string on array{} in isset\(\) does not exist\.#'
             path: ./src/Zend/Translate/Adapter/Array.php
         -
             message: '#Offset string on array{} in isset\(\) does not exist\.#'
             path: ./src/Zend/Translate/Adapter/Ini.php
-        -
-            message: '#Offset .+ on array{.+} in empty\(\) does not exist\.#'
-            path: ./src/Zend/Translate/Adapter.php
         # Defensive coding, argument can be multiple types
         -
             message: '#Result of \|\| is always true\.#'
@@ -66,7 +60,3 @@ parameters:
         -
             message: '#Method Zend_Translate_Adapter_XmlTm::_contentElement\(\) is unused\.#'
             path: ./src/Zend/Translate/Adapter/XmlTm.php
-        # This isn't true, there is an empty check on this property in the class
-        -
-            message: '#Property Zend_Translate_Adapter_Tmx::\$_useId is never read, only written\.#'
-            path: ./src/Zend/Translate/Adapter/Tmx.php

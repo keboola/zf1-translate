@@ -31,6 +31,8 @@
  */
 class Zend_Translate_Adapter_GettextTest extends PHPUnit\Framework\TestCase
 {
+    protected $_errorOccurred;
+
     /**
      * Runs the test methods of this class.
      *
@@ -53,7 +55,7 @@ class Zend_Translate_Adapter_GettextTest extends PHPUnit\Framework\TestCase
     public function testCreate()
     {
         $adapter = new Zend_Translate_Adapter_Gettext(dirname(__FILE__) . '/_files/translation_en.mo');
-        $this->assertTrue($adapter instanceof Zend_Translate_Adapter_Gettext);
+        $this->assertInstanceOf(Zend_Translate_Adapter_Gettext::class, $adapter);
 
         try {
             $adapter = new Zend_Translate_Adapter_Gettext(dirname(__FILE__) . '/_files/nofile.mo', 'en');

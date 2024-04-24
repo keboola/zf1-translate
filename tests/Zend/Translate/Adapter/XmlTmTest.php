@@ -31,10 +31,12 @@
  */
 class Zend_Translate_Adapter_XmlTmTest extends PHPUnit\Framework\TestCase
 {
+    protected $_errorOccurred;
+
     public function testCreate()
     {
         $adapter = new Zend_Translate_Adapter_XmlTm(dirname(__FILE__) . '/_files/translation_en.xmltm');
-        $this->assertTrue($adapter instanceof Zend_Translate_Adapter_XmlTm);
+        $this->assertInstanceOf(Zend_Translate_Adapter_XmlTm::class, $adapter);
 
         try {
             $adapter = new Zend_Translate_Adapter_XmlTm(dirname(__FILE__) . '/_files/nofile.xmltm', 'en');

@@ -31,6 +31,8 @@
  */
 class Zend_Translate_Adapter_CsvTest extends PHPUnit\Framework\TestCase
 {
+    protected $_errorOccurred;
+
     public function setUp(): void
     {
         if (Zend_Translate_Adapter_Csv::hasCache()) {
@@ -41,7 +43,7 @@ class Zend_Translate_Adapter_CsvTest extends PHPUnit\Framework\TestCase
     public function testCreate()
     {
         $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/translation_en.csv');
-        $this->assertTrue($adapter instanceof Zend_Translate_Adapter_Csv);
+        $this->assertInstanceOf(Zend_Translate_Adapter_Csv::class, $adapter);
 
         try {
             $adapter = new Zend_Translate_Adapter_Csv(dirname(__FILE__) . '/_files/nofile.csv', 'en');

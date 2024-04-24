@@ -31,10 +31,12 @@
  */
 class Zend_Translate_Adapter_XliffTest extends PHPUnit\Framework\TestCase
 {
+    protected $_errorOccurred;
+
     public function testCreate()
     {
         $adapter = new Zend_Translate_Adapter_Xliff(dirname(__FILE__) . '/_files/translation_en.xliff', 'en');
-        $this->assertTrue($adapter instanceof Zend_Translate_Adapter_Xliff);
+        $this->assertInstanceOf(Zend_Translate_Adapter_Xliff::class, $adapter);
 
         try {
             $adapter = new Zend_Translate_Adapter_Xliff(dirname(__FILE__) . '/_files/nofile.xliff', 'en');
